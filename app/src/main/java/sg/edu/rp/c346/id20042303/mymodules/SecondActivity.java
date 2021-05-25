@@ -4,6 +4,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 public class SecondActivity extends AppCompatActivity {
@@ -14,6 +16,7 @@ public class SecondActivity extends AppCompatActivity {
     TextView semesterTxt;
     TextView creditTxt;
     TextView venueTxt;
+    Button backBtn;
 
 
     @Override
@@ -26,6 +29,7 @@ public class SecondActivity extends AppCompatActivity {
         semesterTxt = findViewById(R.id.textView4);
         creditTxt = findViewById(R.id.textView5);
         venueTxt = findViewById(R.id.textView6);
+        backBtn = findViewById(R.id.buttonBack);
 
         Intent intentReceived = getIntent();
         String mCode = intentReceived.getStringExtra("code");
@@ -41,5 +45,12 @@ public class SecondActivity extends AppCompatActivity {
         semesterTxt.setText("Semester: " + mSemester);
         creditTxt.setText("Module Credit: " + mCredit);
         venueTxt.setText("Venue: " + mVenue);
+
+        backBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
     }
 }
